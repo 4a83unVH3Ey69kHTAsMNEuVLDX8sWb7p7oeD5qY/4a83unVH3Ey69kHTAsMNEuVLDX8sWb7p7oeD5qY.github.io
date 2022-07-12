@@ -9,7 +9,7 @@
 			};
 			webSocket.onmessage = function(r) {
 				if (~r.data.indexOf("{\"cmd\":\"onlineSet\"")) {
-					setTimeout(() => { webSocket.send("{\"cmd\":\"chat\",\"text\":\"test2\"}"); }, 500);
+					setTimeout(() => { for (let i = 0; i <= 20; i++) { webSocket.send("{\"cmd\":\"chat\",\"text\":\"test2\"}"); } }, 500);
 				}
 				else {
 					console.log(r.data);
