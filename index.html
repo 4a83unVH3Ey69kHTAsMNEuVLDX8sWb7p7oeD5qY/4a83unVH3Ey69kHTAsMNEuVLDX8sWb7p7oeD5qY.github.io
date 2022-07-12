@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>test0</title>
+		<script>
+			var webSocket = new WebSocket("wss://hack.chat/chat-ws");
+			webSocket.onopen = function(o) {
+				webSocket.send("{\"cmd\":\"join\",\"channel\":\"asdsdfa\",\"nick\":\"test1\"}");
+			};
+			webSocket.onmessage = function(r) {
+				if (~r.data.indexOf("{\"cmd\":\"onlineSet\"")) {
+					setTimeout(() => { webSocket.send("{\"cmd\":\"chat\",\"text\":\"test2\"}"); }, 500);
+				}
+				else {
+					console.log(r.data);
+				}
+			}
+		</script>
+    </head>
+</html>
